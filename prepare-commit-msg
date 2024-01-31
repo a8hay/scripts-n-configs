@@ -1,0 +1,7 @@
+#!/bin/sh
+COMMIT_MESSAGE_FILE=$1
+BRANCH_NAME=$(git symbolic-ref --short HEAD) # Get the current branch name
+
+if ! grep -q "^$branch_name: " "$commit_message_file"; then
+  sed -i.bak "1s/^/$BRANCH_NAME: /" "$COMMIT_MESSAGE_FILE" # Prefix commit message with branch name
+fi
